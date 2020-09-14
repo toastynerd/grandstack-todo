@@ -1,12 +1,39 @@
 {
   "name": "grand-todo",
   "version": "1.0.0",
-  "description": "",
+  "description": "learning to work with the GRAND stack, starting with a simple todo app",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node src/index.js",
+    "client-dev": "parcel client/index.html",
+    "client-build": "parcel build client/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/toastynerd/grandstack-todo.git"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/toastynerd/grandstack-todo/issues"
+  },
+  "homepage": "https://github.com/toastynerd/grandstack-todo#readme",
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "components": "^0.1.0",
+    "neo4j-driver": "^4.1.2",
+    "neo4j-graphql-js": "^2.16.3"
+  },
+  "devDependencies": {
+    "@apollo/client": "^3.2.0",
+    "@babel/core": "^7.11.6",
+    "@babel/preset-react": "^7.10.4",
+    "apollo": "^2.30.3",
+    "graphql": "^15.3.0",
+    "parcel-bundler": "^1.12.4",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }
