@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache } from '@apollo/client';
+import './global.css'
 import App from './components/app';
 
 const client = new ApolloClient({

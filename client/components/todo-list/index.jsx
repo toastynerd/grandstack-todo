@@ -1,5 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { useQuery, gql } from '@apollo/client';
+import List from './list.jsx';
+import './todo-list.css';
 
 const todoQuery = gql`
     query {
@@ -16,17 +18,12 @@ const TodoList = () => {
   if (loading) return <p>loading...</p>;
   if (error) return <p>error: {error}</p>;
 
-  console.log(data);
   return (
-    <div>
+    <div className="todo-list">
       <h2>Still left to accomplish:</h2>
-      <ul className="todos">
-        {
-          data.Todo.map((todo) => {
-            return <li key={todo._id}>{todo.task}</li>
-          })
-        }
-      </ul>
+      <List listData={data.Todo.map((item) => {
+        return {'_id': item._id, 'text': item.task}
+      })}/>
     </div>
   );
 }
