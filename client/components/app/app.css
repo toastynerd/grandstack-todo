@@ -4,6 +4,7 @@
   padding: 1em;
   padding-top: .5em;
   max-width: 100vmin;
+  margin: auto;
 }
 
 .app>h1 {
