@@ -2,16 +2,7 @@ import React, { Component } from 'react';
 import {gql, useMutation} from '@apollo/client';
 import './todo-form.css';
 
-const ADD_TODO = gql`
-  mutation CreateTodo($task: String!) {
-    CreateTodo(task: $task) {
-      _id
-      task
-    }
-  }
-`
 
-const [addTodo, { data }] = useMutation(ADD_TODO);
 
 class TodoForm extends Component {
   constructor(props) {
@@ -27,7 +18,7 @@ class TodoForm extends Component {
     event.preventDefault();
     console.log(this.state.newTask);
     let newData = this.state.newTask;
-    addTodo({variables: {type: newData}});
+    this.props.addTodo({variables: {task: newData}});
     this.setState({newTask: ''});
   }
 

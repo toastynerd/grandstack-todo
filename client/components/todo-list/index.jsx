@@ -1,7 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import List from './list.jsx';
-import TodoForm from './todo-form'
+import TodoFormWrapper from './todo-form-wrapper'
 import './todo-list.css';
 
 const todoQuery = gql`
@@ -16,13 +16,14 @@ const todoQuery = gql`
 
 const TodoList = () => {
   const { loading, error, data } = useQuery(todoQuery);
+
   if (loading) return <p>loading...</p>;
   if (error) return <p>error: {error}</p>;
 
   return (
     <div className="todo-list">
       <h2>Still left to accomplish:</h2>
-      <TodoForm/>
+      <TodoFormWrapper/>
       <List listData={data.Todo.map((item) => {
         return {'_id': item._id, 'text': item.task}
       })}/>
