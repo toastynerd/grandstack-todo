@@ -15,7 +15,9 @@ const todoQuery = gql`
 
 
 const TodoList = () => {
-  const { loading, error, data } = useQuery(todoQuery);
+  const { loading, error, data } = useQuery(todoQuery, {
+    pollInterval: 500
+  });
 
   if (loading) return <p>loading...</p>;
   if (error) return <p>error: {error}</p>;

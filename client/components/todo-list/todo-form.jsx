@@ -2,34 +2,23 @@ import React, { Component } from 'react';
 import {gql, useMutation} from '@apollo/client';
 import './todo-form.css';
 
-
-
-class TodoForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {newTask: ''};
-  }
-
-  handleChange(event) {
-    this.setState({newTask: event.target.value});
-  }
-
-  handleSubmit(event) {
+function TodoForm({addTodo}) {
+  let input;
+  const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state.newTask);
-    let newData = this.state.newTask;
-    this.props.addTodo({variables: {task: newData}});
-    this.setState({newTask: ''});
-  }
+    addTodo({variables: {task: input.value}});
+    input.value = '';
+  };
 
-  render() {
-    return (
-      <form className="todo-form" onSubmit={this.handleSubmit.bind(this)}>
-        <input type="text" onChange={this.handleChange.bind(this)} value={this.state.newTask} placeholder="new task"/>
-        <button type="submit">Create</button>
-      </form>
-    )
-  }
-}
+  return (
+    <form className="todo-form" onSubmit={handleSubmit}>
+      <input type="text" ref={node => {
+          input = node;
+        }}
+      />
+      <button type="submit">Create</button>
+    </form>
+  )
+};
 
 export default TodoForm
