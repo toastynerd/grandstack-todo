@@ -13,8 +13,7 @@ const ADD_TODO = gql`
 
 
 const TodoFormWrapper = () => {
-  const [addTodo, { data }] = useMutation(ADD_TODO);
-  console.log(data);
+  const [addTodo] = useMutation(ADD_TODO);
 
   return (
     <TodoForm addTodo={addTodo.bind(this)}/>
